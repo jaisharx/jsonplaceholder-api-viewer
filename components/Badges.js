@@ -1,10 +1,13 @@
 import { Badge } from 'react-bootstrap';
 
-export default function Badges({ resources }) {
+export default function Badges({ children }) {
     return (
         <div className="mt-2">
-            {resources.map((type) => (
-                <Badge className="mx-2" key={type}>{type}</Badge>
+            <Badge variant="light">Resources:</Badge>
+            {children.map((type) => (
+                <Badge className="mx-2" variant="primary" key={type}>
+                    {type}
+                </Badge>
             ))}
         </div>
     );
