@@ -35,7 +35,7 @@ export default function Home() {
     return (
         <>
             <Head>
-                <title>Jsonplaceholder api viewer</title>
+                <title>jsonplaceholder api viewer</title>
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
