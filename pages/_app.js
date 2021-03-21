@@ -1,5 +1,5 @@
 import '../styles/globals.css';
-import 'highlight.js/styles/a11y-light.css';
+import 'highlight.js/styles/atom-one-light.css';
 
 
 function MyApp({ Component, pageProps }) {
