@@ -20,7 +20,7 @@ const MainContent = ({ data, error }) => {
 
     return (
         <main>
-            <small>Your're React version: {React.version}</small>
+            <small>Your React version: {React.version}</small>
             <JSONViewer data={data} />
         </main>
     );
