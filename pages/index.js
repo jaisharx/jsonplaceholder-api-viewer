@@ -19,10 +19,10 @@ const MainContent = ({ data, error }) => {
     if (error) return <Warning errorType="noValidResource" />;
 
     return (
-        <>
+        <main>
             <small>Your're React version: {React.version}</small>
             <JSONViewer data={data} />
-        </>
+        </main>
     );
 };
 
@@ -52,7 +52,7 @@ export default function Home() {
                 </Badges>
                 <hr />
 
-                {<MainContent data={data} error={error} />}
+                <MainContent data={data} error={error} />
             </Container>
         </>
     );
