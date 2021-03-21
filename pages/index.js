@@ -6,21 +6,21 @@ import Head from 'next/head';
 import useSWR from 'swr';
 import Input from 'components/Input';
 import Badges from 'components/Badges';
-import Loader from 'components/Loader';
 import Warning from 'components/Warning';
 import JSONViewer from 'components/JSONViewer';
 import resources from 'lib/resources';
+import Skeleton from 'react-loading-skeleton';
 
 const APIUrl = resources.APIUrl;
 const resource = resources.resource;
 
 const MainContent = ({ data, error }) => {
-    if (!data && !error) return <Loader />; // loading state
+    if (!data && !error) return <Skeleton count={5} />; // loading state
     if (error) return <Warning errorType="noValidResource" />;
 
     return (
         <main>
-            <small>Your React version: {React.version}</small>
+            <small>React v{React.version} currently in use.</small>
             <JSONViewer data={data} />
         </main>
     );
