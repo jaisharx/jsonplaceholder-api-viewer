@@ -14,10 +14,10 @@ const APIUrl = 'https://jsonplaceholder.typicode.com';
 const resource = 'todos/1';
 
 const MainContent = ({ data, error }) => {
-    if (!data) return <Loader />;
+    if (!data && !error) return <Loader />; // loading state
     if (error)
         return (
-            <Warning>Resources can't be empty. Type any from above!</Warning>
+            <Warning>Type a valid resource from above.</Warning>
         );
 
     return (
