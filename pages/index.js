@@ -8,6 +8,7 @@ import Input from 'components/Input';
 import Badges from 'components/Badges';
 import Loader from 'components/Loader';
 import Warning from 'components/Warning';
+import JSONViewer from 'components/JSONViewer';
 
 const APIUrl = 'https://jsonplaceholder.typicode.com';
 const resource = 'todos/1';
@@ -22,7 +23,7 @@ const MainContent = ({ data, error }) => {
     return (
         <>
             <small>Your're React version: {React.version}</small>
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <JSONViewer data={data} />
         </>
     );
 };
