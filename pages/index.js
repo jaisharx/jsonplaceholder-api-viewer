@@ -9,9 +9,10 @@ import Badges from 'components/Badges';
 import Loader from 'components/Loader';
 import Warning from 'components/Warning';
 import JSONViewer from 'components/JSONViewer';
+import resources from 'lib/resources';
 
-const APIUrl = 'https://jsonplaceholder.typicode.com';
-const resource = '/todos/1';
+const APIUrl = resources.APIUrl;
+const resource = resources.resource;
 
 const MainContent = ({ data, error }) => {
     if (!data && !error) return <Loader />; // loading state
