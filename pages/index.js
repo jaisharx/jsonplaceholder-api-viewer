@@ -11,7 +11,7 @@ import Warning from 'components/Warning';
 import JSONViewer from 'components/JSONViewer';
 
 const APIUrl = 'https://jsonplaceholder.typicode.com';
-const resource = 'todos/1';
+const resource = '/todos/1';
 
 const MainContent = ({ data, error }) => {
     if (!data && !error) return <Loader />; // loading state
@@ -30,7 +30,7 @@ const MainContent = ({ data, error }) => {
 
 export default function Home() {
     const [parameter, setParameter] = useState(resource);
-    const { data, error } = useSWR(`${APIUrl}/${parameter}`, fetcher);
+    const { data, error } = useSWR(`${APIUrl}${parameter}`, fetcher);
 
     return (
         <>
@@ -42,7 +42,7 @@ export default function Home() {
             <Container className="shadow-sm mt-4 mb-4 p-4 border rounded">
                 <h1>{APIUrl}</h1>
                 <Input val={parameter} onChangeHandler={setParameter} />
-                <Badges>
+                <Badges setParameter={setParameter}>
                     {[
                         '/posts',
                         '/comments',

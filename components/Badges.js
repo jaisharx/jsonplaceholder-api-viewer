@@ -1,14 +1,21 @@
-import { Badge } from 'react-bootstrap';
+import { Badge, Button } from 'react-bootstrap';
 
-export default function Badges({ children }) {
+export default function Badges({ setParameter, children }) {
     return (
-        <div className="mt-2">
-            <Badge variant="light">Resources:</Badge>
+        <div className="d-flex mt-2 gap">
             {children.map((type) => (
-                <Badge className="mx-2" variant="primary" key={type}>
+                <Button variant="primary" size="sm" key={type} onClick={() => setParameter(type)}>
                     {type}
-                </Badge>
+                </Button>
             ))}
+
+            <style jsx>
+                {`
+                    .gap {
+                        gap: 10px;
+                    }
+                `}
+            </style>
         </div>
     );
 }
