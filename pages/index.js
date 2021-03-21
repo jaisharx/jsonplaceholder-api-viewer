@@ -1,6 +1,6 @@
-import React from 'react';
 import { Container } from 'react-bootstrap';
 import { useState } from 'react';
+import React from 'react';
 import fetcher from 'api/fetcher';
 import Head from 'next/head';
 import useSWR from 'swr';
@@ -15,10 +15,7 @@ const resource = '/todos/1';
 
 const MainContent = ({ data, error }) => {
     if (!data && !error) return <Loader />; // loading state
-    if (error)
-        return (
-            <Warning>Type a valid resource from above.</Warning>
-        );
+    if (error) return <Warning errorType="noValidResource" />;
 
     return (
         <>
