@@ -5,7 +5,7 @@ import fetcher from 'api/fetcher';
 import Head from 'next/head';
 import useSWR from 'swr';
 import Input from 'components/Input';
-import Badges from 'components/Badges';
+import Buttons from 'components/Buttons';
 import Warning from 'components/Warning';
 import JSONViewer from 'components/JSONViewer';
 import resources from 'lib/resources';
@@ -14,21 +14,17 @@ import Skeleton from 'react-loading-skeleton';
 const APIUrl = resources.APIUrl;
 const resource = resources.resource;
 
-const MainContent = ({ data, error }) => {
-    if (error) return <Warning errorType="noValidResource" />;
-    if (!data) return <Skeleton count={5} />; // loading state
-
-    return (
-        <main>
-            <small>React v{React.version} currently in use.</small>
-            <JSONViewer data={data} />
-        </main>
-    );
-};
+const ALLResources = [
+    '/posts',
+    '/comments',
+    '/albums',
+    '/photos',
+    '/todos',
+    '/users',
+];
 
 export default function Home() {
     const [parameter, setParameter] = useState(resource);
-    const { data, error } = useSWR(`${APIUrl}${parameter}`, fetcher);
 
     return (
         <>
@@ -40,20 +36,25 @@ export default function Home() {
             <Container className="shadow-sm mt-4 mb-4 p-4 border rounded">
                 <h1>{APIUrl}</h1>
                 <Input val={parameter} onChangeHandler={setParameter} />
-                <Badges setParameter={setParameter}>
-                    {[
-                        '/posts',
-                        '/comments',
-                        '/albums',
-                        '/photos',
-                        '/todos',
-                        '/users',
-                    ]}
-                </Badges>
+                <Buttons setParameter={setParameter} data={ALLResources} />
                 <hr />
 
-                <MainContent data={data} error={error} />
+                <MainContent parameter={parameter} />
             </Container>
         </>
     );
 }
+
+const MainContent = ({ parameter }) => {
+    const { data, error } = useSWR(`${APIUrl}${parameter}`, fetcher);
+
+    if (error) return <Warning errorType="noValidResource" />;
+    if (!data) return <Skeleton count={5} />; // loading state
+
+    return (
+        <main>
+            <small>React v{React.version} currently in use.</small>
+            <JSONViewer data={data} />
+        </main>
+    );
+};

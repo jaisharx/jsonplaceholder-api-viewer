@@ -1,1 +1,5 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
+
+.gap {
+    gap: 10px;
+}
