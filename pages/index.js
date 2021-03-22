@@ -15,8 +15,8 @@ const APIUrl = resources.APIUrl;
 const resource = resources.resource;
 
 const MainContent = ({ data, error }) => {
-    if (!data && !error) return <Skeleton count={5} />; // loading state
     if (error) return <Warning errorType="noValidResource" />;
+    if (!data) return <Skeleton count={5} />; // loading state
 
     return (
         <main>
