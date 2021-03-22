@@ -7,7 +7,7 @@ hljs.registerLanguage('json', json);
 export default function JSONViewer({ data }) {
     useEffect(() => {
         hljs.highlightAll();
-    }, [data]);
+    }, []);
 
     return (
         <pre>
